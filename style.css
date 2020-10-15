@@ -1,0 +1,320 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+#mo {visibility: hidden;}
+#mo:after
+{
+    content: 'MO';
+    visibility: visible;
+    display: inline-flex;
+}
+#mo span {display: none;}
+#di {visibility: hidden;}
+#di:after
+{
+    content: 'DI';
+    visibility: visible;
+    display: inline-flex;
+}
+#di span {display: none;}
+#mi {visibility: hidden;}
+#mi:after
+{
+    content: 'MI';
+    visibility: visible;
+    display: inline-flex;
+}
+#mi span {display: none;}
+#do {visibility: hidden;}
+#do:after
+{
+    content: 'DO';
+    visibility: visible;
+    display: inline-flex;
+}
+#do span {display: none;}
+#fr {visibility: hidden;}
+#fr:after
+{
+    content: 'FR';
+    visibility: visible;
+    display: inline-flex;
+}
+#fr span {display: none;}
+#sa {visibility: hidden;}
+#sa:after
+{
+    content: 'SA';
+    visibility: visible;
+    display: inline-flex;
+}
+#sa span {display: none;}
+#so {visibility: hidden;}
+#so:after
+{
+    content: 'SO';
+    visibility: visible;
+    display: inline-flex;
+}
+#so span {display: none;}
+
+/* .entry
+{
+    color: transparent;
+    font-size: 0px;
+    user-select: none;
+} */
+/* #details_button
+{
+    font-size: 0px;
+    background: url('./src/images/1x/baseline_menu_black_18dp.png') no-repeat center;
+    border: none;
+    height: 40px;
+    width: 40px;
+}
+#delete_button
+{
+    font-size: 0px;
+    background: url('./src/images/1x/baseline_clear_black_18dp.png') no-repeat center;
+    border: none;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+} */
+/* .cellheader
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+} */
+
+/* td
+{
+    vertical-align: top;
+    text-align: center;
+    padding: 0;
+}
+th
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+table
+{
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+table, th, td
+{
+    border: 1px solid black;
+} */
+/* .cellheadercontainer
+{
+    padding: 0;
+}
+.title
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    margin-top: 90px;
+    margin-bottom: 3%;
+    text-align: center;
+}
+#current_day
+{
+    color: red;
+} */
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 70px;
+}
+.wrapper input {
+    border: none;
+    background: #333;
+    outline: none;
+    color: #f3f3f3;
+}
+.wrapper input:hover {
+    background: #ddd;
+    color: black;
+}
+.nav_box {
+
+}
+
+
+#nav {
+    display: none;
+} 
+
+#arrow_left
+{
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: rgb(90, 121, 207);
+    left: 10%;
+    top: 90%;
+    position: fixed;
+    height: 40px;
+    width: 40px;
+    outline: none;
+}
+#arrow_right
+{
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: rgb(90, 121, 207);
+    right: 10%;
+    top: 90%;
+    position: fixed;
+    height: 40px;
+    width: 40px;
+    outline: none;
+}
+#random_button
+{
+    color: transparent;
+    user-select: none;
+    background: url('./src/images/2x/baseline_help_center_black_18dp.png') no-repeat rgb(90, 121, 207);
+    border: 1px solid black;
+    background-position: center;
+    height: 40px;
+    width: 40px;
+    left: 30%;
+    top: 90%;
+    position: fixed;
+    outline: none;
+}
+#today
+{
+    color: transparent;
+    user-select: none;
+    background: url('./src/images/2x/baseline_calendar_today_black_18dp.png') no-repeat, rgb(90, 121, 207);
+    border: 1px solid black;
+    background-position: center;
+    height: 40px;
+    width: 40px;
+    left: 60%;
+    top: 90%;
+    position: fixed;
+    outline: none;
+}
+
+#nav_button {
+    /* all: initial; */
+    border: none;
+    background-color: #333;
+    outline: none;
+    width: 100%;
+    height: 70px;
+}
+#nav_button img {
+    filter: invert(0.8);
+}
+
+#nav.responsive {
+    display: block;
+}
+
+.wrapper_random {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 50px;
+}
+#random_button {
+    all: initial;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #444;
+    color: #f3f3f3;
+    text-align: center;
+    grid-column: 2 / span 2;
+    /* justify-items: center; */
+}
+
+.wrapper_table {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: minmax(50px, 1fr);
+    text-align: center;
+}
+
+.entry_back {
+    /* background-color: red; */
+    border-radius: 50%;
+    /* border: 1px solid red; */
+    display: inline-block;
+    padding: 5px;
+    
+}
+h6 {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr)); */
+}
+.cell_wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+    align-items: center;
+    justify-items: center;
+}
+
+
+[class*="col-"]
+{
+    
+    
+}
+@media only screen and (max-width: 600px) {
+    #nav.responsive .wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-auto-rows: 70px;
+    }
+    #nav.responsive .active {
+        background: rgb(90, 121, 207);
+    }
+}
+@media only screen and (min-width: 600px)
+{
+    
+}
+@media only screen and (min-width: 768px)
+{
+    #nav {
+        display: block;
+    }
+    #nav_button {
+        display: none;
+    }
+    #wrapper_arrows {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+        grid-auto-rows: 70px;
+    }
+    #arrow_left {
+        all: initial;
+        border: none;
+        color: #f3f3f3;
+        background: url('./src/images/2x/baseline_arrow_back_white_18dp.png') no-repeat #555 center;
+    }
+    #arrow_right {
+        all: initial;
+        border: none;
+        color: #f3f3f3;
+        background: url('./src/images/2x/baseline_arrow_forward_white_18dp.png') no-repeat #555 center;
+    }
+    #today {
+        all: initial;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        border: none;
+        background-color: #555;
+        color: #f3f3f3;
+    }
+}

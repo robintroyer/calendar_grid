@@ -1,0 +1,9 @@
+{
+    "name": "robin/calendar",
+    "description": "calendar",
+    "type": "project",
+    "require": {},
+    "autoload": {
+        "classmap": ["models/"]
+    }
+}

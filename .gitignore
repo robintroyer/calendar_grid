@@ -1,0 +1,5 @@
+
+# Do not store config file under version control!
+config.php
+/vendor/
+
