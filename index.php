@@ -121,7 +121,7 @@
                 $storage->deleteEntry($_POST['delete_id']);
                 unlink(__DIR__ . '/ical/entry' . $_POST['delete_id'] . '.ics');
             }
-            echo '<div id="form_dropdown_div" class="col-6 col-s-6 form_dropdown" onclick="showForm()">Neuer Termin
+            echo '<div id="form_dropdown_div" class="form_dropdown" onclick="showForm()">Neuer Termin
             <img src="./src/images/2x/baseline_arrow_drop_down_black_18dp.png" alt="dropdown"></div>';
             $form->printForm();
             echo '<div style="height:100px;display:block;"></div>';

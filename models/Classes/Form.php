@@ -48,7 +48,7 @@
             $input_endtime = '<input type="time" name="endTime">';
             $input_color = '<input type="color" name="color">';
             $input_submit = '<input type="submit" name="submit" id="formsubmit">';
-            echo '<div class="row">';
+            echo '<div class="wrapper_new_entry">';
             echo '<div id="new_entry_form" class="disabled col-5 col-s-5">';
             echo "<form method='post'>";
             echo "Bezeichnung:<br/>$input_title<br/>";
@@ -63,8 +63,8 @@
             echo $input_submit;
             echo "</form>";
             echo '</div>';
-            $file_upload = '<div id="ics_form" class="col-5 col-s-5"><p>Hier kann eine .ics Datei hochgeladen werden.</p>
-            <form method="post" enctype="multipart/form-data">
+            $file_upload = '<div id="ics_form" class="disabled"><form method="post" enctype="multipart/form-data">
+            Hier kann eine .ics Datei hochgeladen werden.
             <input type="hidden" name="max_file_size" value="30000">
             <input type="file" name="fileToUpload">
             <input type="submit" name="submitUpload">

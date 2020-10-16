@@ -146,7 +146,7 @@ class Calendar implements ViewingMethodInterface {
             ) {
                 // $this->calendar .= '<td><div class="cellheadercontainer">
                 // <h6 id="current_day" class="cellheader">' . $this->max_days_counter . '</h6></div></td>';
-                $table .= '<div class="cell_wrapper"><h6>' . $this->max_days_counter . '</h6></div>';
+                $table .= '<div class="cell_wrapper"><h6 id="current_day">' . $this->max_days_counter . '</h6></div>';
             } else {
                 // $this->calendar .= '<td><div class="cellheadercontainer"><h6 class="cellheader">'
                 // . $this->max_days_counter . '</h6></div></td>';
