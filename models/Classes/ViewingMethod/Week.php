@@ -19,10 +19,11 @@ class Week implements ViewingMethodInterface
             $this->weeknumber = $this->current_week;
         }
         $this->methods = new Methods();
+        $this->showButtons();
     }
     public function printData($entries)
     {   
-        $this->showButtons();
+        // $this->showButtons();
         // echo '<span class="title">KW ' . $this->weeknumber . '</span>';
         echo 
         '<style type="text/css">
@@ -31,34 +32,137 @@ class Week implements ViewingMethodInterface
                 content: "KW ' . $this->weeknumber . '";
             }
         </style>';
-        $this->table = '<table class="table table-bordered"><thead class="thead-dark"><tr>';
-        $this->table .= '<th style="text-align:center;">#</th>';
+        // $this->table = '<table class="table table-bordered"><thead class="thead-dark"><tr>';
+        // $this->table .= '<th style="text-align:center;">#</th>';
+        // $dates = $this->generateDates();
+        // for ($i = 1; $i <= 7; $i++){
+        //     $day_number = date('d', strtotime($dates[$i - 1]));
+        //     $month_number = date('m', strtotime($dates[$i - 1]));
+        //     $year = date('Y', strtotime($dates[$i - 1]));
+        //     $this->table .= '<th style="text-align:center;">' . $this->weekdays[$i - 1]
+        //     . ', ' . $day_number . '.' . $month_number . '.' . $year . '</th>';
+        // }
+        // $this->table .= '</tr>';
+        // $this->table .= '</thead>';
+        // for ($i = 0; $i <= 23; $i++) {
+        //     $this->table .= '<tr><th>' . $i . ':00</th>';
+        //     foreach ($this->weekdays as $weekday) {
+        //         $this->table .= '<td></td>';
+        //     }
+        //     $this->table .= '</tr>';
+        // }
+        // $this->table .= '</table>';
+        // $dom = new DOMDocument();
+        // $dom->loadHTML($this->table);
+        // $tds = $dom->getElementsByTagName('td');
+        // $cells = [];
+        // $counter = 0;
+        // $arraycounter = 0;
+        // foreach ($tds as $td) {
+        //     $cells[$arraycounter][] = $td;
+        //     $counter++;
+        //     if ($counter > 6) {
+        //         $counter = 0;
+        //         $arraycounter++;
+        //     }
+        // }
+        // foreach ($entries as $entry) {
+        //     if ($entry->getEnd() != 0) {
+        //         $dates = $this->methods->getAllDates($entry->getStart(), $entry->getEnd());
+        //     } else {
+        //         $start = $entry->getStart();
+        //     }
+        //     $start_time_hour = date('G', strtotime($entry->getTime()));
+        //     $end_time_hour = date('G', strtotime($entry->getEndTime()));
+        //     $color = $entry->getColor();
+        //     list($r, $g, $b) = sscanf($color, '#%02x%02x%02x');
+        //     $div = '<div class="week-entry border rounded"
+        //     style="background-color:rgb(' . $r . ',' . $g . ',' . $b . ');"><form method="post"><input type="submit" class="year_details_button"
+        //     name="expand" value="Details" /><input type="hidden" name="id" value="' . $entry->getID() . '" /></form></div>';
+        //     if ($entry->getFullday()) {
+        //         if (isset($start)) {
+        //             $calendar_week = date('W', strtotime($start));
+        //             if ($calendar_week == $_GET['kw']) {
+        //                 $day_of_week = date('N', strtotime($start));
+        //                 for ($i = 0; $i <= 23; $i++) {
+        //                     $this->generateEntry($cells[$i][$day_of_week - 1], $div, $dom);
+        //                 }
+        //             }
+        //         } elseif(isset($dates)) {
+        //             foreach ($dates as $date) {
+        //                 $calendar_week = date('W', strtotime($date));
+        //                 if ($calendar_week == $_GET['kw']) {
+        //                     $day_of_week = date('N', strtotime($date));
+        //                     for ($i = 0; $i <= 23; $i++) {
+        //                         $this->generateEntry($cells[$i][$day_of_week - 1], $div, $dom);
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     } else {
+        //         if (isset($dates)) {
+        //             foreach ($dates as $key => $date) {
+        //                 $calendar_week = date('W', strtotime($date));
+        //                 if ($calendar_week == $_GET['kw']) {
+        //                     $day_of_week = date('N', strtotime($date));
+        //                     if ($key == array_key_first($dates)) {
+        //                         for ($i = $start_time_hour; $i <= 23; $i++) {
+        //                             $this->generateEntry($cells[$i][$day_of_week - 1], $div, $dom);
+        //                         }
+        //                     } elseif ($key == array_key_last($dates)) {
+        //                         for ($i = 0; $i <= $end_time_hour; $i++) {
+        //                             $this->generateEntry($cells[$i][$day_of_week - 1], $div, $dom);
+        //                         }
+        //                     } else {
+        //                         for ($i = 0; $i <= 23; $i++) {
+        //                             $this->generateEntry($cells[$i][$day_of_week - 1], $div, $dom);
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     unset($dates);
+        //     unset($start);
+        // }
+        // $this->table = $dom->saveHTML();
+        // return $this->table;
+
         $dates = $this->generateDates();
+
+        for ($i = 1; $i <= 7; $i++){
+                $day_number = date('d', strtotime($dates[$i - 1]));
+                $month_number = date('m', strtotime($dates[$i - 1]));
+                $year = date('Y', strtotime($dates[$i - 1]));
+        }
+
+        $table = '<div id="week_wrapper">';
+
+        $table .= '<p></p>';
         for ($i = 1; $i <= 7; $i++){
             $day_number = date('d', strtotime($dates[$i - 1]));
             $month_number = date('m', strtotime($dates[$i - 1]));
             $year = date('Y', strtotime($dates[$i - 1]));
-            $this->table .= '<th style="text-align:center;">' . $this->weekdays[$i - 1]
-            . ', ' . $day_number . '.' . $month_number . '.' . $year . '</th>';
+            $table .= '<p class="weekdays">' . substr($this->weekdays[$i - 1], 0, 2)
+            . ', ' . $day_number . '.' . $month_number . '.' . $year . '</p>';
         }
-        $this->table .= '</tr>';
-        $this->table .= '</thead>';
         for ($i = 0; $i <= 23; $i++) {
-            $this->table .= '<tr><th>' . $i . ':00</th>';
-            foreach ($this->weekdays as $weekday) {
-                $this->table .= '<td></td>';
+            $table .= '<p class="time">' . $i . ':00</p>';
+            for ($j = 0; $j < 7; $j++) {
+                $table .= '<span class="entry_wrapper"></span>';
             }
-            $this->table .= '</tr>';
         }
-        $this->table .= '</table>';
+        
+        $table .= '</div>';
+
         $dom = new DOMDocument();
-        $dom->loadHTML($this->table);
-        $tds = $dom->getElementsByTagName('td');
+        $dom->loadHTML($table);
+        $spans = $dom->getElementsByTagName('span');
         $cells = [];
         $counter = 0;
         $arraycounter = 0;
-        foreach ($tds as $td) {
-            $cells[$arraycounter][] = $td;
+        foreach ($spans as $span) {
+            $cells[$arraycounter][] = $span;
             $counter++;
             if ($counter > 6) {
                 $counter = 0;
@@ -75,9 +179,10 @@ class Week implements ViewingMethodInterface
             $end_time_hour = date('G', strtotime($entry->getEndTime()));
             $color = $entry->getColor();
             list($r, $g, $b) = sscanf($color, '#%02x%02x%02x');
-            $div = '<div class="week-entry border rounded"
-            style="background-color:rgb(' . $r . ',' . $g . ',' . $b . ');"><form method="post"><input type="submit" class="year_details_button"
-            name="expand" value="Details" /><input type="hidden" name="id" value="' . $entry->getID() . '" /></form></div>';
+            // $div = '<div class="week-entry border rounded"
+            // style="background-color:rgb(' . $r . ',' . $g . ',' . $b . ');"><form method="post"><input type="submit" class="year_details_button"
+            // name="expand" value="Details" /><input type="hidden" name="id" value="' . $entry->getID() . '" /></form></div>';
+            $div = '<div class="entry" style="background-color:rgb(' . $r . ',' . $g . ', ' . $b . ')"></div>';
             if ($entry->getFullday()) {
                 if (isset($start)) {
                     $calendar_week = date('W', strtotime($start));
@@ -126,6 +231,8 @@ class Week implements ViewingMethodInterface
         }
         $this->table = $dom->saveHTML();
         return $this->table;
+
+        // echo $table;
     }
     private function generateEntry($cell, $xml, $dom)
     {
@@ -145,17 +252,17 @@ class Week implements ViewingMethodInterface
     private function showButtons()
     {
         clearstatcache();
-        $previous_week = '<input type="submit" name="week" value="Zurueck">';
-        $next_week = '<input type="submit" name="week" value="Vor">';
+        $previous_week = '<input id="arrow_left" type="submit" name="week" value="Zurueck">';
+        $next_week = '<input id="arrow_right" type="submit" name="week" value="Vor">';
         if (
             $_GET['kw'] == date('W')
             && $_GET['year'] == date('Y')
         ) {
-            $current_week = '<input type="submit" name="week" value="aktuelle Woche" disabled>';
+            $current_week = '<input id="today" type="submit" name="week" value="aktuelle Woche" disabled>';
         } else {
-            $current_week = '<input type="submit" name="week" value="aktuelle Woche">';
+            $current_week = '<input id="today" type="submit" name="week" value="aktuelle Woche">';
         }
-        echo '<form method="post">' . $previous_week . $next_week . $current_week . '</form>';
+        echo '<form id="arrows_form" method="post"><div id="wrapper_arrows">' . $previous_week . $current_week . $next_week . '</div></form>';
         if (!isset($_GET['kw'])) {
             $_GET['kw'] = $this->current_week;
         }

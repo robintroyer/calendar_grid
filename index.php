@@ -32,6 +32,7 @@
         $storage = new Database();
         $form = new Form($storage);
         $view = new View($storage);
+        echo '<div id="top_wrapper">';
         if (isset($_GET['viewingmethod'])) {
             if ($_GET['viewingmethod'] == 'Monat') {
                 $config = new stdClass();
@@ -69,8 +70,9 @@
     <body>
         <?php
             $entries = $storage->getEntries(0);
+            // echo '<div id="top_wrapper">';
             echo '<div id="nav" class="navbar col-12 col-s-12">';
-            echo '<form method="get">';
+            echo '<form id="nav_form" method="get">';
             if ($_GET['viewingmethod'] == 'Jahr') {
                 $show_year = '<input class="active buttons_disabled nav_box" type="submit" name="viewingmethod" value="Jahr" disabled>';
             } else {
@@ -100,8 +102,9 @@
             echo '</form></div>';
             echo '<button onclick="showNav()" id="nav_button"><img src="./src/images/2x/baseline_view_headline_black_18dp.png" alt="menu"></button>';
 
-            echo '<form method="post"><div class="wrapper_random"><input id="random_button" type="submit"
+            echo '<form id="random_button_form" method="post"><div class="wrapper_random"><input id="random_button" type="submit"
             name="random" value="zufälliger Eintrag"></div></form>';
+            echo '</div>';
             echo '<br />';
             if (isset($_SESSION['new_record'])) {
                 echo $_SESSION['new_record'];
@@ -112,7 +115,7 @@
             if (isset($_POST['random'])) {
                 $random->generateRandomEvent();
             }
-            echo '<span class="title"></span>';
+            echo '<p class="title"></p>';
             echo $method->printData($entries);
             if (isset($_POST['expand'])) {
                 $view->showDesc();

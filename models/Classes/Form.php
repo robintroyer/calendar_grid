@@ -63,7 +63,9 @@
             echo $input_submit;
             echo "</form>";
             echo '</div>';
-            $file_upload = '<div id="ics_form" class="disabled"><form method="post" enctype="multipart/form-data">
+            $file_upload = '<div id="ics_form" class="disabled">
+            <div class="border"></div>
+            <form method="post" enctype="multipart/form-data">
             Hier kann eine .ics Datei hochgeladen werden.
             <input type="hidden" name="max_file_size" value="30000">
             <input type="file" name="fileToUpload">

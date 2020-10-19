@@ -336,7 +336,8 @@ class Calendar implements ViewingMethodInterface {
             $current_month = '<input id="today" class="buttons" type="submit" name="currentMonth" value="heute">';
         }
         // echo '<form method="post">' . $previous_month . $next_month . $current_month . '</form>';
-        echo '<form method="post"><div id="wrapper_arrows">' . $previous_month . $current_month . $next_month . '</div></form>';
+        // echo '<div id="top_wrapper">';
+        echo '<form id="arrows_form" method="post"><div id="wrapper_arrows">' . $previous_month . $current_month . $next_month . '</div></form>';
     }
     private function showCurrentMonth()
     {
